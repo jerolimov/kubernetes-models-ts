@@ -1,0 +1,61 @@
+{
+  "name": "@kubernetes-models/tekton",
+  "version": "1.0.0",
+  "description": "Tekton Pipelines models",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tommy351/kubernetes-models-ts.git"
+  },
+  "homepage": "https://github.com/tommy351/kubernetes-models-ts/tree/master/third-party/tekton",
+  "author": "Christoph Jerolimov <jerolimov@redhat.com>",
+  "license": "MIT",
+  "main": "index.cjs",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "crd-generate && publish-scripts build",
+    "prepack": "publish-scripts prepack"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist",
+    "linkDirectory": true
+  },
+  "keywords": [
+    "kubernetes",
+    "kubernetes-models",
+    "tekton",
+    "tektoncd",
+    "pipeline",
+    "pipelines"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@kubernetes-models/apimachinery": "workspace:^",
+    "@kubernetes-models/base": "workspace:^",
+    "@kubernetes-models/validate": "workspace:^",
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "@kubernetes-models/crd-generate": "workspace:^",
+    "@kubernetes-models/publish-scripts": "workspace:^",
+    "vitest": "^0.29.8"
+  },
+  "crd-generate": {
+    "input": [
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-clustertask.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-customrun.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-pipeline.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-pipelinerun.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-resolutionrequest.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-task.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-taskrun.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/300-verificationpolicy.yaml",
+      "https://raw.githubusercontent.com/tektoncd/pipeline/v0.52.0/config/500-webhooks.yaml"
+    ],
+    "output": "./gen"
+  }
+}
